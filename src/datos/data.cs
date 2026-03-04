@@ -1,0 +1,129 @@
+namespace Database
+{
+    public class Data
+    {
+        public static void Datos(string Selec, int Horario, string Nombre, Dictionary<string, List<string>> dic, List<string> Lista)
+        {
+            
+            if (Horario == 1)
+            {
+                Lista.Add(Nombre);
+                dic[Selec] = Lista;
+            }
+            else if (Horario == 2)
+            {
+                dic.TryAdd($"{Selec}2", null!);
+                Lista.Add(Nombre);
+                dic[$"{Selec}2"] = Lista;
+            }
+
+            //cambia el orden, primero horarios y luego restaurantes. Entonces introduce los nombres de las reservaciones segun el horario y restaurante hasta que cada list se llene
+        }
+        public static Dictionary<string, List<string>> RestaurantesNombres()
+        {
+            Dictionary<string, List<string>> Restaurantes = new Dictionary<string, List<string>>();
+
+            Restaurantes.Add("Ember", null!);
+            Restaurantes.Add("Zao", null!);
+            Restaurantes.Add("Grappa", null!);
+            Restaurantes.Add("Larimar", null!);
+
+            return Restaurantes;
+        }
+        public static List<string> lista1 (string restaurante)
+        {
+            List<string> Horario1 = new List<string>();
+
+            if (restaurante == "Ember")
+            {
+                Horario1 = new List<string>(3);
+                Horario1.Capacity = 3;
+            }
+            else if (restaurante == "Zao")
+            {
+                Horario1 = new List<string>(4);
+                Horario1.Capacity = 4;
+            }
+            else if (restaurante == "Grappa")
+            {
+                Horario1 = new List<string>(2);
+                Horario1.Capacity = 2;
+            }    
+            else if (restaurante == "Larimar")
+            {
+                Horario1 = new List<string>();
+                Horario1.Capacity = 3;
+            }
+
+            return Horario1;
+        }
+        public static List<string> lista2 (string restaurante)
+        {
+            List<string> Horario2 = new List<string>();
+
+            if (restaurante == "Ember")
+            {
+                Horario2 = new List<string>(3);
+                Horario2.Capacity = 3;
+            }
+            else if (restaurante == "Zao")
+            {
+                Horario2 = new List<string>(4);
+                Horario2.Capacity = 4;
+            }
+            else if (restaurante == "Grappa")
+            {
+                Horario2 = new List<string>(2);
+                Horario2.Capacity = 2;
+            }    
+            else if (restaurante == "Larimar")
+            {
+                Horario2 = new List<string>();
+                Horario2.Capacity = 3;
+            }
+
+            return Horario2;
+        }
+        public static bool confirmacion_cupos (int cupos, string restaurante_cupos)
+        {
+            bool resultado = false;
+            if (restaurante_cupos == "Larimar" && cupos < 4)
+            {
+                resultado = false;
+            }
+            else if (restaurante_cupos == "Grappa" && cupos < 3)
+            {
+                resultado = false;
+            }
+            else if (restaurante_cupos == "Zao" && cupos < 5)
+            {
+                resultado = false;
+            }
+            else if (restaurante_cupos == "Ember" && cupos < 4)
+            {
+                resultado = false;
+            }
+            else if (restaurante_cupos == "Larimar2" && cupos < 4)
+            {
+                resultado = false;
+            }
+            else if (restaurante_cupos == "Grappa2" && cupos < 3)
+            {
+                resultado = false;
+            }
+            else if (restaurante_cupos == "Zao2" && cupos < 5)
+            {
+                resultado = false;
+            }
+            else if (restaurante_cupos == "Ember2" && cupos < 4)
+            {
+                resultado = false;
+            }
+            else
+            {
+                resultado = true;
+            }
+            return resultado;
+        }
+    }
+}

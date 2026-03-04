@@ -1,0 +1,15 @@
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\bin\Debug\net10.0\ProyectoSenator.exe
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\bin\Debug\net10.0\ProyectoSenator.deps.json
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\bin\Debug\net10.0\ProyectoSenator.runtimeconfig.json
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\bin\Debug\net10.0\ProyectoSenator.dll
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\bin\Debug\net10.0\ProyectoSenator.pdb
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.AssemblyInfoInputs.cache
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.AssemblyInfo.cs
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.csproj.CoreCompileInputs.cache
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.sourcelink.json
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.dll
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\refint\ProyectoSenator.dll
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.pdb
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ProyectoSenator.genruntimeconfig.cache
+C:\Users\Manuel Dominguez\Documents\GitHub\ProyectoSenator\obj\Debug\net10.0\ref\ProyectoSenator.dll
