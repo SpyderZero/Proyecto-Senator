@@ -1,22 +1,15 @@
+using System;
+using System.Collections.Generic;
+
 namespace Database
+
 {
     public class Data
     {
         public static void Datos(string Selec, int Horario, string Nombre, Dictionary<string, List<string>> dic, List<string> Lista)
         {
-            
-            if (Horario == 1)
-            {
-                Lista.Add(Nombre);
-                dic[Selec] = Lista;
-            }
-            else if (Horario == 2)
-            {
-                dic.TryAdd($"{Selec}2", null!);
-                Lista.Add(Nombre);
-                dic[$"{Selec}2"] = Lista;
-            }
 
+            dic[Selec].Add(Nombre);
             //cambia el orden, primero horarios y luego restaurantes. Entonces introduce los nombres de las reservaciones segun el horario y restaurante hasta que cada list se llene
         }
         public static Dictionary<string, List<string>> RestaurantesNombres()
@@ -100,22 +93,6 @@ namespace Database
                 resultado = false;
             }
             else if (restaurante_cupos == "Ember" && cupos < 4)
-            {
-                resultado = false;
-            }
-            else if (restaurante_cupos == "Larimar2" && cupos < 4)
-            {
-                resultado = false;
-            }
-            else if (restaurante_cupos == "Grappa2" && cupos < 3)
-            {
-                resultado = false;
-            }
-            else if (restaurante_cupos == "Zao2" && cupos < 5)
-            {
-                resultado = false;
-            }
-            else if (restaurante_cupos == "Ember2" && cupos < 4)
             {
                 resultado = false;
             }

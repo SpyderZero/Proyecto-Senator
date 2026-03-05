@@ -1,10 +1,12 @@
 using Database;
+using System;
+using System.Collections.Generic;
 
 namespace Principal
 {
     class ProyectoPrincipal
     {
-        public static void Reservation_Program()
+        public static void Reservation_Program(Dictionary<string, List<string>> diccionario1, Dictionary<string, List<string>> diccionario2, List<string> Lista)
         {
             string nombre;
             int cantidad;
@@ -15,9 +17,10 @@ namespace Principal
             bool busca;
             List<string> Lista1 = new List<string>();
             List<string> Lista2 = new List<string>();
+
             do
             {
-            Console.WriteLine("Bienvenido al sistema de reservaciones Senator. \n ¿A nombre de quien es la reservación?");
+            Console.WriteLine("¿A nombre de quien es la reservación?");
             nombre = Console.ReadLine()!;
             
             if (nombre == "")
@@ -64,8 +67,7 @@ namespace Principal
 
             Console.WriteLine("Seleccione uno de nuestros restaurantes disponibles en el horario indicado para hacer su reservación:");
 
-            List<string> listarestaurantes = Data.RestaurantesNombres().Keys.ToList();
-            Dictionary<string, List<string>> Listado = Data.RestaurantesNombres();
+            List<string> listarestaurantes = diccionario1.Keys.ToList();
 
             for (int i = 0; i <= 3; i++)
             {
@@ -74,34 +76,39 @@ namespace Principal
                 do
                 {
                     selec = Console.ReadLine()!;
-                    switch (horario)
-                    {
-                        case 1:
-                        Data.Datos(selec, horario, nombre, Listado, Lista1);
-                        break;
-
-                        case 2:
-                        Data.Datos(selec, horario, nombre, Listado, Lista2);
-                        break;
-                    }
                     
                     busca = listarestaurantes.Contains(selec);
                     
 
-                    if (busca == true)
+                    if (busca == true && horario == 1)
                     {
-                        confirmar = Confirmacion(selec, Listado, nombre, horario);
+                        confirmar = Confirmacion(selec, diccionario1, nombre, horario);
+                    }
+                    else if (busca == true && horario == 2)
+                    {
+                        confirmar = Confirmacion(selec, diccionario2, nombre, horario);
                     }
                     else
                     {
                         Console.WriteLine("Digite un restaurante válido");
-                        selec = "Nulo";
+                        continue;
                     }
 
                 } while (selec == "Nulo");
             
             if (confirmar == false)
                 {
+                    switch (horario)
+                    {
+                        case 1:
+                        diccionario1[selec].Add(nombre);
+                        break;
+
+                        case 2:
+                        diccionario2[selec].Add(nombre);
+                        break;
+                    };
+
                     Console.WriteLine($"Su reservación es: \n En {selec} \n Entre las {listahorarios[0].ToString("HH:mm")} y {listahorarios[1].ToString("HH:mm")} \n Para {cantidad} Personas \n A nombre de: {nombre} \n //¿Desea hacer otra reservación?...");
                 }
             else if (confirmar == true)
@@ -122,7 +129,10 @@ namespace Principal
 
             } while(nombre != "Finalizar");
         }
-
+        public static void eliminar_reserva ()
+        {
+            
+        }
         public static List<DateTime> horarios (int valor)
         {
             List<DateTime> listahorarios = new List<DateTime>();
@@ -149,18 +159,10 @@ namespace Principal
         {
             bool verificado = false;
 
-            if (hora == 1)
-            {
+
             int conteo = lista[val1].Count;
 
             verificado = Data.confirmacion_cupos(conteo, val1);
-            }
-            else if (hora == 2)
-            {
-                int conteo = lista[val1 + "2"].Count;
-
-            verificado = Data.confirmacion_cupos(conteo, $"{val1}2");
-            }
             
 
             return verificado;
