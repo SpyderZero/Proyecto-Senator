@@ -33,7 +33,7 @@ namespace MiPrimeraApp
                 ProyectoPrincipal.Reservation_Program(Restaurantes_Primerhorario, Restaurantes_Segundohorario, Lista);
                 break;
                 case 2:
-                ProyectoPrincipal.eliminar_reserva();
+                ProyectoPrincipal.eliminar_reserva(Restaurantes_Primerhorario, Restaurantes_Segundohorario);
                 break;
             }
             }while (menu != 4);

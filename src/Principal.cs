@@ -129,9 +129,19 @@ namespace Principal
 
             } while(nombre != "Finalizar");
         }
-        public static void eliminar_reserva ()
+
+        public static void eliminar_reserva (Dictionary<string, List<string>> dic1, Dictionary<string, List<string>> dic2)
         {
             
+        }
+        public static void checar_cupos (Dictionary<string, List<string>> dic1, Dictionary<string, List<string>> dic2)
+        {
+            int horario = 0;
+            int cupos = dic1["Grappa"].Count;
+
+            horario = int.Parse(Console.ReadLine()!);
+
+            Console.WriteLine(cupos);
         }
         public static List<DateTime> horarios (int valor)
         {

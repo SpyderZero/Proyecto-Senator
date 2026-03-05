@@ -80,19 +80,19 @@ namespace Database
         public static bool confirmacion_cupos (int cupos, string restaurante_cupos)
         {
             bool resultado = false;
-            if (restaurante_cupos == "Larimar" && cupos < 4)
+            if (restaurante_cupos == "Larimar" && cupos <= 2)
             {
                 resultado = false;
             }
-            else if (restaurante_cupos == "Grappa" && cupos < 3)
+            else if (restaurante_cupos == "Grappa" && cupos <= 1)
             {
                 resultado = false;
             }
-            else if (restaurante_cupos == "Zao" && cupos < 5)
+            else if (restaurante_cupos == "Zao" && cupos <= 3)
             {
                 resultado = false;
             }
-            else if (restaurante_cupos == "Ember" && cupos < 4)
+            else if (restaurante_cupos == "Ember" && cupos <= 2)
             {
                 resultado = false;
             }
