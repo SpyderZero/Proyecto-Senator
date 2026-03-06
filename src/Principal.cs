@@ -316,7 +316,7 @@ namespace Principal
         }
         public static List<string> listado (string restaurante, List<string> Capacidad)
         {
-
+            Capacidad = new List<string>();
             if (restaurante == "Ember")
             {
                 Capacidad.Capacity = 2;
