@@ -68,7 +68,7 @@ namespace Principal
 
             Console.WriteLine("Seleccione uno de nuestros restaurantes disponibles en el horario indicado para hacer su reservación:");
 
-            List<string> listarestaurantes = diccionario1.Keys.ToList();
+            List<string> listarestaurantes = nombres_restaurantes(diccionario1);
 
             for (int i = 0; i <= 3; i++)
             {
@@ -130,11 +130,83 @@ namespace Principal
 
             } while(nombre != "Finalizar");
         }
-
+        public static List<string> nombres_restaurantes (Dictionary<string, List<string>> listanombres)
+        {
+            List<string> lista = listanombres.Keys.ToList();
+            return lista;
+        }
         public static void eliminar_reserva (Dictionary<string, List<string>> dic1, Dictionary<string, List<string>> dic2)
         {
+            int restaurante_eliminar = 0;
+            string salir = "";
+            List<string> listanombres = nombres_restaurantes(dic1);
+            int horario = 0;
+            bool confirmacion = false;
             Console.WriteLine("Sentimos que tenga que cancelar su reservación \n ¿En cual de nuestros restaurantes hizo su reservación?");
-            
+            do
+            {
+                for (int i = 0; i <= 3; i++)
+                    {
+                        Console.WriteLine($"{i + 1}. {listanombres[i]}");
+                    }
+                try 
+                    {
+                        restaurante_eliminar = int.Parse(Console.ReadLine()!); 
+                    }
+                catch (Exception)
+                    {
+                        Console.WriteLine("Comando no reconocido. . .");
+                        continue;
+                    }
+            Console.WriteLine("¿En que horario agendó su reservación? \n - Horario 1: 6:00 PM a 8:00 PM \n - Horario 2: 8:00 PM a 10:00 PM \n Digite 1 u 2 según su elección");
+
+                try 
+                    {
+                        horario = int.Parse(Console.ReadLine()!); 
+                    }
+            catch (Exception)
+                    {
+                        Console.WriteLine("Comando no reconocido. . .");
+                        continue;
+                    }
+            Console.WriteLine("¿A nombre de quien fue agendada la reservación?");
+            string nombre = Console.ReadLine()!;
+            if (horario == 1)
+            {
+                confirmacion = confirmar_reservacion(dic1, nombre, listanombres[restaurante_eliminar - 1]);
+                switch (confirmacion)
+                {
+                    case true:
+                    dic1[listanombres[restaurante_eliminar - 1]].Remove(nombre);
+                    Console.WriteLine("Reservación anulada con éxito");
+                    break;
+                    case false:
+                    Console.WriteLine($"No existe ninguna reservación a nombre de {nombre} en {listanombres[restaurante_eliminar - 1]}");
+                    break;
+                }
+            }
+            else if (horario == 2)
+            {
+                confirmacion = confirmar_reservacion(dic2, nombre, listanombres[restaurante_eliminar - 1]);
+                switch (confirmacion)
+                {
+                    case true:
+                    dic2[listanombres[restaurante_eliminar - 1]].Remove(nombre);
+                    Console.WriteLine("Reservación anulada con éxito");
+                    break;
+                    case false:
+                    Console.WriteLine($"No existe ninguna reservación a nombre de {nombre} en {listanombres[restaurante_eliminar - 1]}");
+                    break;
+                }
+            }
+            Console.WriteLine("¿Desea eliminar alguna otra reservación?");
+            salir = Console.ReadLine()!;
+            }while(salir == "Si" && salir == "si");
+        }
+        public static bool confirmar_reservacion (Dictionary<string, List<string>> diccionario, string nombre, string Restaurante)
+        {
+            bool confirmar = diccionario[Restaurante].Contains(nombre);
+            return confirmar;
         }
         public static void checar_cupos (Dictionary<string, List<string>> dic1, Dictionary<string, List<string>> dic2)
         {
@@ -142,7 +214,8 @@ namespace Principal
             int restaurante_chequeo = 0;
             int cupos = 0;
             string confirmacion = "";
-            List<string> listanombres = dic1.Keys.ToList();
+            List<string> listanombres = nombres_restaurantes(dic1);
+            restaurante_chequeo = int.Parse(Console.ReadLine()!);
             do
             {Console.WriteLine("¿En que horario desea revisar su reservación? \n - Horario 1: 6:00 PM a 8:00 PM \n - Horario 2: 8:00 PM a 10:00 PM \n Digite 1 u 2 según su elección");
             try 
