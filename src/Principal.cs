@@ -215,8 +215,6 @@ namespace Principal
             int cupos = 0;
             string confirmacion = "";
             List<string> listanombres = nombres_restaurantes(dic1);
-            restaurante_chequeo = int.Parse(Console.ReadLine()!);
-            do
             {Console.WriteLine("¿En que horario desea revisar su reservación? \n - Horario 1: 6:00 PM a 8:00 PM \n - Horario 2: 8:00 PM a 10:00 PM \n Digite 1 u 2 según su elección");
             try 
                 {
