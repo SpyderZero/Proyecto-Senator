@@ -319,19 +319,19 @@ namespace Principal
             Capacidad = new List<string>();
             if (restaurante == "Ember")
             {
-                Capacidad.Capacity = 2;
+                Capacidad.Capacity = 3;
             }
             else if (restaurante == "Zao")
             {
-                Capacidad.Capacity = 3;
+                Capacidad.Capacity = 4;
             }
             else if (restaurante == "Grappa")
             {
-                Capacidad.Capacity = 1;
+                Capacidad.Capacity = 2;
             }    
             else if (restaurante == "Larimar")
             {
-                Capacidad.Capacity = 2;
+                Capacidad.Capacity = 3;
             }
 
             return Capacidad;
