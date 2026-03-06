@@ -137,11 +137,38 @@ namespace Principal
         public static void checar_cupos (Dictionary<string, List<string>> dic1, Dictionary<string, List<string>> dic2)
         {
             int horario = 0;
-            int cupos = dic1["Grappa"].Count;
-
-            horario = int.Parse(Console.ReadLine()!);
-
-            Console.WriteLine(cupos);
+            string restaurante_chequeo = "";
+            int cupos = 0;
+            string confirmacion = "";
+            List<string> listanombres = dic1.Keys.ToList();
+            do
+            {Console.WriteLine("¿En que horario desea revisar su reservación? \n - Horario 1: 6:00 PM a 8:00 PM \n - Horario 2: 8:00 PM a 10:00 PM \n Digite 1 u 2 según su elección");
+            horario = int.Parse(Console.ReadLine()!); 
+            Console.WriteLine("Seleccione uno de nuestros restaurantes disponibles en el horario indicado");
+            for (int i = 0; i <= 3; i++)
+            {
+                Console.WriteLine(listanombres[i]);
+            }
+            restaurante_chequeo = Console.ReadLine()!;
+            if (horario == 1)
+                {
+                    int reservaciones = dic1[restaurante_chequeo].Count;
+                    cupos = dic1[restaurante_chequeo].Capacity - reservaciones;
+                }
+            else if (horario == 2)
+                {
+                    int reservaciones = dic2[restaurante_chequeo].Count;
+                    cupos = dic2[restaurante_chequeo].Capacity - reservaciones;
+                }
+            Console.WriteLine($"En {restaurante_chequeo} hay disponibles {cupos} cupos en el horario seleccionado \n ¿Desea chequear alguna otra reservación?");
+            confirmacion = Console.ReadLine()!;
+            if (confirmacion != "Si" && confirmacion != "si")
+                {
+                    Console.WriteLine("Comando no reconocido");
+                    break;
+                }
+            }while (confirmacion != "No" && confirmacion != "no");
+            Console.WriteLine("Regresando al inicio. . . ");
         }
         public static List<DateTime> horarios (int valor)
         {
@@ -176,6 +203,28 @@ namespace Principal
             
 
             return verificado;
+        }
+        public static List<string> listado (string restaurante, List<string> Capacidad)
+        {
+
+            if (restaurante == "Ember")
+            {
+                Capacidad.Capacity = 2;
+            }
+            else if (restaurante == "Zao")
+            {
+                Capacidad.Capacity = 3;
+            }
+            else if (restaurante == "Grappa")
+            {
+                Capacidad.Capacity = 1;
+            }    
+            else if (restaurante == "Larimar")
+            {
+                Capacidad.Capacity = 2;
+            }
+
+            return Capacidad;
         }
     }
 }

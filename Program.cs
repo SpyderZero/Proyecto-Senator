@@ -11,16 +11,16 @@ namespace MiPrimeraApp
             List<string> Lista = new List<string>();
             Dictionary<string, List<string>> Restaurantes_Primerhorario = new Dictionary<string, List<string>>();
 
-            Restaurantes_Primerhorario.Add("Ember", Lista);
-            Restaurantes_Primerhorario.Add("Zao", Lista);
-            Restaurantes_Primerhorario.Add("Grappa", Lista);
-            Restaurantes_Primerhorario.Add("Larimar", Lista);
+            Restaurantes_Primerhorario.Add("Ember", ProyectoPrincipal.listado("Ember", Lista));
+            Restaurantes_Primerhorario.Add("Zao", ProyectoPrincipal.listado("Zao", Lista));
+            Restaurantes_Primerhorario.Add("Grappa", ProyectoPrincipal.listado("Grappa", Lista));
+            Restaurantes_Primerhorario.Add("Larimar", ProyectoPrincipal.listado("Larimar", Lista));
             Dictionary<string, List<string>> Restaurantes_Segundohorario = new Dictionary<string, List<string>>();
 
-            Restaurantes_Segundohorario.Add("Ember", Lista);
-            Restaurantes_Segundohorario.Add("Zao", Lista);
-            Restaurantes_Segundohorario.Add("Grappa", Lista);
-            Restaurantes_Segundohorario.Add("Larimar", Lista);
+            Restaurantes_Segundohorario.Add("Ember", ProyectoPrincipal.listado("Ember", Lista));
+            Restaurantes_Segundohorario.Add("Zao", ProyectoPrincipal.listado("Zao", Lista));
+            Restaurantes_Segundohorario.Add("Grappa", ProyectoPrincipal.listado("Grappa", Lista));
+            Restaurantes_Segundohorario.Add("Larimar", ProyectoPrincipal.listado("Larimar", Lista));
 
 
             do
@@ -34,6 +34,9 @@ namespace MiPrimeraApp
                 break;
                 case 2:
                 ProyectoPrincipal.eliminar_reserva(Restaurantes_Primerhorario, Restaurantes_Segundohorario);
+                break;
+                case 3:
+                ProyectoPrincipal.checar_cupos(Restaurantes_Primerhorario, Restaurantes_Segundohorario);
                 break;
             }
             }while (menu != 4);

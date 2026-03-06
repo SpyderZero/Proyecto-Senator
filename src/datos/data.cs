@@ -23,33 +23,7 @@ namespace Database
 
             return Restaurantes;
         }
-        public static List<string> lista1 (string restaurante)
-        {
-            List<string> Horario1 = new List<string>();
-
-            if (restaurante == "Ember")
-            {
-                Horario1 = new List<string>(3);
-                Horario1.Capacity = 3;
-            }
-            else if (restaurante == "Zao")
-            {
-                Horario1 = new List<string>(4);
-                Horario1.Capacity = 4;
-            }
-            else if (restaurante == "Grappa")
-            {
-                Horario1 = new List<string>(2);
-                Horario1.Capacity = 2;
-            }    
-            else if (restaurante == "Larimar")
-            {
-                Horario1 = new List<string>();
-                Horario1.Capacity = 3;
-            }
-
-            return Horario1;
-        }
+        
         public static List<string> lista2 (string restaurante)
         {
             List<string> Horario2 = new List<string>();
