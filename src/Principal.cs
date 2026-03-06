@@ -287,15 +287,34 @@ namespace Principal
         }
         public static bool Confirmacion (String val1, Dictionary<string, List<string>> lista, string nombrereserva, int hora)
         {
-            bool verificado = false;
+            bool resultado = false;
 
 
             int conteo = lista[val1].Count;
 
-            verificado = Data.confirmacion_cupos(conteo, val1);
+            if (val1 == "Larimar" && conteo <= 2)
+            {
+                resultado = false;
+            }
+            else if (val1 == "Grappa" && conteo <= 1)
+            {
+                resultado = false;
+            }
+            else if (val1 == "Zao" && conteo <= 3)
+            {
+                resultado = false;
+            }
+            else if (val1 == "Ember" && conteo <= 2)
+            {
+                resultado = false;
+            }
+            else
+            {
+                resultado = true;
+            }
             
 
-            return verificado;
+            return resultado;
         }
         public static List<string> listado (string restaurante, List<string> Capacidad)
         {
