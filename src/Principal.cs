@@ -1,6 +1,7 @@
 using Database;
 using System;
 using System.Collections.Generic;
+using System.Xml;
 
 namespace Principal
 {
@@ -132,35 +133,54 @@ namespace Principal
 
         public static void eliminar_reserva (Dictionary<string, List<string>> dic1, Dictionary<string, List<string>> dic2)
         {
+            Console.WriteLine("Sentimos que tenga que cancelar su reservación \n ¿En cual de nuestros restaurantes hizo su reservación?");
             
         }
         public static void checar_cupos (Dictionary<string, List<string>> dic1, Dictionary<string, List<string>> dic2)
         {
             int horario = 0;
-            string restaurante_chequeo = "";
+            int restaurante_chequeo = 0;
             int cupos = 0;
             string confirmacion = "";
             List<string> listanombres = dic1.Keys.ToList();
             do
             {Console.WriteLine("¿En que horario desea revisar su reservación? \n - Horario 1: 6:00 PM a 8:00 PM \n - Horario 2: 8:00 PM a 10:00 PM \n Digite 1 u 2 según su elección");
-            horario = int.Parse(Console.ReadLine()!); 
+            try 
+                {
+                    horario = int.Parse(Console.ReadLine()!); 
+                }
+            catch (Exception)
+                {
+                    Console.WriteLine("Comando no reconocido. . .");
+                    continue;
+                }
             Console.WriteLine("Seleccione uno de nuestros restaurantes disponibles en el horario indicado");
             for (int i = 0; i <= 3; i++)
             {
-                Console.WriteLine(listanombres[i]);
+                Console.WriteLine($"{i + 1}. {listanombres[i]}");
             }
-            restaurante_chequeo = Console.ReadLine()!;
+            restaurante_chequeo = int.Parse(Console.ReadLine()!);
+            if (restaurante_chequeo >= 5)
+                {
+                    Console.WriteLine("Comando no reconocido. . .");
+                    continue;
+                }
             if (horario == 1)
                 {
-                    int reservaciones = dic1[restaurante_chequeo].Count;
-                    cupos = dic1[restaurante_chequeo].Capacity - reservaciones;
+                    int reservaciones = dic1[listanombres[restaurante_chequeo - 1]].Count;
+                    cupos = dic1[listanombres[restaurante_chequeo - 1]].Capacity - reservaciones;
                 }
             else if (horario == 2)
                 {
-                    int reservaciones = dic2[restaurante_chequeo].Count;
-                    cupos = dic2[restaurante_chequeo].Capacity - reservaciones;
+                    int reservaciones = dic2[listanombres[restaurante_chequeo - 1]].Count;
+                    cupos = dic2[listanombres[restaurante_chequeo - 1]].Capacity - reservaciones;
                 }
-            Console.WriteLine($"En {restaurante_chequeo} hay disponibles {cupos} cupos en el horario seleccionado \n ¿Desea chequear alguna otra reservación?");
+            else
+                {
+                    Console.WriteLine("Comando no reconocido. . .");
+                    continue;
+                }
+            Console.WriteLine($"En {listanombres[restaurante_chequeo - 1]} hay disponibles {cupos} cupos en el horario seleccionado \n ¿Desea chequear alguna otra reservación?");
             confirmacion = Console.ReadLine()!;
             if (confirmacion != "Si" && confirmacion != "si")
                 {
